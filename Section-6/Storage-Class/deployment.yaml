@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-deployment-pv
+  labels:
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      name: sample-pod
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: sample-pod
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: "/mnt/data"
+            name: app-storage
+          - mountPath: "/mnt/config"
+            name: config-storage
+      volumes:
+      - name: app-storage
+        persistentVolumeClaim:
+          claimName: custom-pvc-disk
+      - name: config-storage
+        persistentVolumeClaim:
+          claimName: custom-pvc-disk-two
