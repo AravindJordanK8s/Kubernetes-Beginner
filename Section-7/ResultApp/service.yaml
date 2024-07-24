@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resultapp-service
+  labels:
+    name: resultapp
+    tier: front-end
+spec:
+  type: NodePort
+  selector:
+    name: resultapp
+    tier: front-end
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 32356
