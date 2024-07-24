@@ -1,0 +1,16 @@
+#This is a Sample YAML file
+
+employee: #Dict
+  name: Aravind
+  department: IMS
+  location: Chennai
+  skills: #Single List
+    - AzureDevOps
+    - AKS
+    - PowerShell
+    - Terraform
+  projects: #Multiple List
+    - name: WK
+      duration: 12
+    - name: kirkland
+      duration: present

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "3"
+    deployment.kubernetes.io/max-replicas: "4"
+    deployment.kubernetes.io/revision: "2"
+  creationTimestamp: "2024-07-05T09:16:47Z"
+  generation: 2
+  labels:
+    app: frontend
+    pod-template-hash: 6d9577974f
+  name: sample-deployment-6d9577974f
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: sample-deployment
+    uid: cf957b60-667d-4436-975b-71d44d9eb626
+  resourceVersion: "761114"
+  uid: 8cf657c2-916d-4414-a05c-d525c780a4ff
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: frontend
+      pod-template-hash: 6d9577974f
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: frontend
+        pod-template-hash: 6d9577974f
+      name: sample-pod
+    spec:
+      containers:
+      - image: kubernetestraining:v1
+        imagePullPolicy: IfNotPresent
+        name: sample-pod
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  observedGeneration: 2
+  replicas: 0

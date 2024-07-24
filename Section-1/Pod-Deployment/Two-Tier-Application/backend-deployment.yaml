@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-application
+  labels:
+    app: backend-application
+    tier: backend
+  namespace: training
+spec: #Deployment Spec
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-application
+  template: #Pod Template
+    metadata:
+      name: backend-application-pod
+      labels:
+        app: backend-application
+        tier: backend
+    spec: #Pod Spec
+      containers:
+      - name: frontend-nginxapp
+        image: praravind1801/deployment-backend:v1
+        ports:
+          - containerPort: 8080

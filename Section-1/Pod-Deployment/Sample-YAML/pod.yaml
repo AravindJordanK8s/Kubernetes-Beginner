@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod #Static Pods
+metadata:
+  name: sample-pod
+  labels:
+    app: frontend
+spec:
+  containers:
+  - name: sample-pod
+    image: praravind1801/docker-handson-2:v2
+    ports:
+    - containerPort: 80
