@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: throw-dice-job
+spec: #Job Spec
+  backoffLimit: 50
+  completions: 3
+  parallelism: 3
+  template:
+    spec: #Pod Spec
+      containers:
+      - name: throw-dice
+        image: kodekloud/throw-dice
+      restartPolicy: Never
