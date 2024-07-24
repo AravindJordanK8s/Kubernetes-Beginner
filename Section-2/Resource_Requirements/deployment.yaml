@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: req-deploy
+  labels:
+    app: req-limits
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: req-limits
+  template:
+    metadata:
+      name: req-pod
+      labels:
+        app: req-limits
+    spec:
+      containers:
+        - name: req-container
+          image: nginx
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"

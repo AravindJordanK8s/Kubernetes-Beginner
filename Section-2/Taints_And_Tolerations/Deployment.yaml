@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-deployment
+  labels:
+    app: blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blue
+  template:
+    metadata:
+      name: blue-pod
+      labels:
+        app: blue
+    spec:
+      containers:
+      - name: blue-container
+        image: nginx
+        ports:
+          - containerPort: 80
+      tolerations:
+        - key: color
+          value: blue
+          effect: NoSchedule
+          operator: Equal
