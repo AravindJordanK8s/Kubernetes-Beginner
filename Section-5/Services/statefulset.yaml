@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ingress-app-backend-deployment
+  labels:
+    app: ingress-backend
+spec:
+  serviceName: headless-service
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ingress-backend
+  template:
+    metadata:
+      labels:
+        app: ingress-backend
+    spec:
+      containers:
+        - name: ingress-backend-container
+          image: praravind1801/ingress-backend:v1
+          ports:
+            - containerPort: 80
